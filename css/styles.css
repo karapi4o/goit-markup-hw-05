@@ -17,6 +17,9 @@
   --foot-media-bg-color: rgba(255, 255, 255, 0.1);
   --foter-icon-hover-color: #31d0aa;
   --customer-border-color: #8e8f99;
+  --backdrop-bg-color: rgba(46, 47, 66, 0.4);
+  --modal-shadow-color: rgba(0, 0, 0, 0.14);
+  --modal-shadow-three-color: rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -29,6 +32,7 @@
 body {
   font-family: "Roboto", sans-serif;
   color: var(--base-color);
+  padding-top: 72px;
 }
 
 ul {
@@ -64,6 +68,10 @@ img {
 
 .header {
   border-bottom: 1px solid var(--footertext-bordercolor-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .nav {
@@ -151,6 +159,40 @@ img {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+.tt {
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--backdrop-bg-color);
+  opacity: 1;
+}
+
+.backdrop.is-hidden {
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 408px;
+  min-height: 576px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px var(--modal-shadow-color),
+    0px 1px 3px var(--portfolio-btn-bgd-three-color),
+    0px 2px 1px var(--modal-shadow-three-color);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
 
 .main-hero-title {
@@ -435,7 +477,7 @@ img {
   border-radius: 4px;
 }
 
-.filter-list-item {
+.filter-list {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
@@ -443,13 +485,35 @@ img {
   margin-right: 0;
 }
 
-.filter-list {
-  background-color: var(--white-color);
-}
-
 .filter-item {
+  background-color: var(--white-color);
   text-decoration-line: none;
   display: block;
+  position: relative;
+}
+
+.filter-item:hover .filter-bg {
+  opacity: 1;
+}
+
+.filter-item:focus .filter-bg {
+  opacity: 1;
+}
+
+.filter-bg {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 300px;
+  background-color: var(--iris-color);
+  opacity: 0;
+}
+
+.bg-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--footertext-bordercolor-color);
+  padding: 40px 32px 0 32px;
 }
 
 .filter-item:hover,
